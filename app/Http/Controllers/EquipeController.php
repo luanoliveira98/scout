@@ -2,13 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Equipe;
 use Illuminate\Http\Request;
 
 class EquipeController extends Controller
 {
+    /**
+     * Lista de equipes
+     * 
+     * @return      string          Lista de Equipes
+     */
     public function index()
     {
-        return "Listar Equipes";
+        $equipes = Equipe::all();
+        return $this->returnJson(config('messages.index.success'), $equipes);
     }
 
     public function store(Request $request)
