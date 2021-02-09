@@ -15,7 +15,10 @@ class CreateEquipesTable extends Migration
     {
         Schema::create('equipes', function (Blueprint $table) {
             $table->id();
+            $table->string('nome');
+            $table->enum('nivel', ['tradicional', 'minor']);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
