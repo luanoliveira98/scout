@@ -12,11 +12,13 @@ class EquipeTest extends TestCase
         $this->assertEquals(200, $response->status());
     }
 
-    public function testIfResponseOfIndex()
+    public function testIfResponseOfIndexIsAnArray()
     {
         $response = $this->call('GET', '/equipes');
 
-        $expected = is_object($response->content());
+        $response = json_decode($response->content());
+
+        $expected = is_array($response->data);
 
         $this->assertTrue($expected);
     }
