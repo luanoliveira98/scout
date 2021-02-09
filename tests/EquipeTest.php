@@ -12,6 +12,18 @@ class EquipeTest extends TestCase
         $this->assertEquals(200, $response->status());
     }
 
+    public function testIfResponseOfIndexIsSuccess()
+    {
+        $response = $this->call('GET', '/equipes');
+
+        $response = json_decode($response->content());
+
+        $expected = ($response->status == 'SUCCESS') ? true : false;
+
+        $this->assertTrue($expected);
+
+    }
+
     public function testIfResponseOfIndexIsAnArray()
     {
         $response = $this->call('GET', '/equipes');
